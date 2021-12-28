@@ -40,6 +40,7 @@ app = Flask(__name__, static_url_path="")
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
+#print(channel_secret)
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
 if channel_secret is None:
     print("Specify LINE_CHANNEL_SECRET as environment variable.")
@@ -114,10 +115,10 @@ def show_fsm():
     machine.get_graph().draw("fsm.png", prog="dot", format="png")
     return send_file("fsm.png", mimetype="image/png")
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token,"吳逸邦好帥")
+# @handler.add(MessageEvent, message=TextMessage)
+# def handle_message(event):
+#     message = TextSendMessage(text=event.message.text)
+#     line_bot_api.reply_message(event.reply_token,"吳逸邦好帥")
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
