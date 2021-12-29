@@ -87,7 +87,7 @@ def webhook_handler():
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info(f"Request body: {body}")
-
+    print("in webhook!")
     # parse webhook body
     try:
         events = parser.parse(body, signature)
