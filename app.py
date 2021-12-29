@@ -72,6 +72,7 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
+        print(f"\nFSM STATE: {machine.state}")
 
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text+"518 is handsome")
@@ -113,7 +114,7 @@ def webhook_handler():
 @app.route("/show-fsm", methods=["GET"])
 def show_fsm():
     machine.get_graph().draw("fsm.png", prog="dot", format="png")
-    return send_file("fsm.png", mimetype="image/png")
+    return send_file("fsm2.png", mimetype="image/png")
 
 # @handler.add(MessageEvent, message=TextMessage)
 # def handle_message(event):
