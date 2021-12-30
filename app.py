@@ -56,6 +56,7 @@ print("123123123")
 
 @app.route("/callback", methods=["POST"])
 def callback():
+    print("incallback")
     signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
