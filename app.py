@@ -51,7 +51,7 @@ if channel_access_token is None:
 
 line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
-line_bot_api.push_message("Uf316e601162f45de7afbad2f3677f5d3",TextSendMessage(text  = "51888888"))
+#line_bot_api.push_message("Uf316e601162f45de7afbad2f3677f5d3",TextSendMessage(text  = "51888888"))
 print("123123123")
 
 @app.route("/callback", methods=["POST"])
