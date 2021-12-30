@@ -51,6 +51,7 @@ if channel_access_token is None:
 
 line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
+line_bot_api.push_message("Uf316e601162f45de7afbad2f3677f5d3",TextSendMessage(text  = "51888888"))
 
 
 @app.route("/callback", methods=["POST"])
@@ -111,7 +112,7 @@ def webhook_handler():
     return "OK"
 
 
-@app.route("/show-fsm", methods=["GET"])
+@app.route("/showfsm", methods=["GET"])
 def show_fsm():
     machine.get_graph().draw("fsm2.png", prog="dot", format="png")
     return send_file("fsm2.png", mimetype="image/png")
