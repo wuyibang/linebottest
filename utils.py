@@ -5,7 +5,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, TemplateS
 
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
-line_bot_api = LineBotApi(channel_access_token)
 
 def send_text_message(reply_token, text):
     line_bot_api = LineBotApi(channel_access_token)
@@ -14,6 +13,7 @@ def send_text_message(reply_token, text):
     return "OK"
 
 def send_button_message(reply_token):
+    line_bot_api = LineBotApi(channel_access_token)
     line_bot_api.reply_message(  # 回復傳入的訊息文字
                         reply_token,
                         TemplateSendMessage(
