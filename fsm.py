@@ -50,9 +50,9 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, "show player table")
         reply_token = event.reply_token
         img_url = 'https://i.imgur.com/FBvQEoq.png'
-        title = "Menu"
+        title = "Player Table"
         uptext = "Check player 2021 and career stats"
-        labels = ["Search player","Show hottest player"]
-        texts = ["Search player","Show hottest player"]
+        labels = ["2021 stats","Career stats"]
+        texts = ["2021 stats","Career stats"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
         
