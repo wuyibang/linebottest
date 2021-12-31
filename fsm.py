@@ -46,12 +46,13 @@ class TocMachine(GraphMachine):
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
     def on_enter_ShowPlayerTable(self,event):
         reply_token = event.reply_token
-        print(event.text)
+        print(event.message.text)
+        playerName = event.message.text
         send_text_message(reply_token, "show player table")
         reply_token = event.reply_token
         img_url = 'https://i.imgur.com/FBvQEoq.png'
         title = "Player Table"
-        uptext = "Check player 2021 and career stats"
+        uptext = "Check "+playerName+ " 2021 and career stats"
         labels = ["2021 stats","Career stats"]
         texts = ["2021 stats","Career stats"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
