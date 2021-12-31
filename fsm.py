@@ -23,7 +23,7 @@ class TocMachine(GraphMachine):
     def on_enter_SearchPlayer(self, event):
         print("I'm entering search player")
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state1")
+        send_text_message(reply_token, "Trigger search player")
 
     def on_enter_state2(self, event):
         print("I'm entering state2")
