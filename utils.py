@@ -12,29 +12,51 @@ def send_text_message(reply_token, text):
 
     return "OK"
 
-def send_button_message(reply_token):
+# def send_button_message(reply_token):
+#     line_bot_api = LineBotApi(channel_access_token)
+#     line_bot_api.reply_message(  # 回復傳入的訊息文字
+#                         reply_token,
+#                         TemplateSendMessage(
+#                             alt_text='Buttons template',
+#                             template=ButtonsTemplate(
+#                                 thumbnail_image_url='https://i.imgur.com/FBvQEoq.png',
+#                                 title='Menu',
+#                                 text='Choose function',
+#                                 actions=[
+#                                     MessageTemplateAction(
+#                                         label='search player',
+#                                         text='search player'
+#                                     ),
+#                                     MessageTemplateAction(
+#                                         label='show hottest player',
+#                                         text='show hottest player'
+#                                     ),
+#                                 ]
+#                             )
+#                         )
+#                     )
+#     return "OK"
+def send_button_message(reply_token, img, title, uptext, labels, texts):
     line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(  # 回復傳入的訊息文字
-                        reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                thumbnail_image_url='https://i.imgur.com/FBvQEoq.png',
-                                title='Menu',
-                                text='Choose function',
-                                actions=[
-                                    MessageTemplateAction(
-                                        label='search player',
-                                        text='search player'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='show hottest player',
-                                        text='show hottest player'
-                                    ),
-                                ]
-                            )
-                        )
-                    )
+    acts = []
+    for i, lab in enumerate(labels):
+        acts.append(
+            MessageTemplateAction(
+                label=lab,
+                text=texts[i]
+            )
+        )
+
+    message = TemplateSendMessage(
+        alt_text='Buttons template',
+        template=ButtonsTemplate(
+            thumbnail_image_url=img,
+            title=title,
+            text=uptext,
+            actions=acts
+        )
+    )
+    line_bot_api.reply_message(reply_token, message)
     return "OK"
 
 """

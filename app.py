@@ -30,6 +30,12 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
+            "source": "SearchPlayer",
+            "dest": "ShowPlayerTable",
+            "conditions": "is_going_to_ShowPlayerTable",
+        },
+        {
+            "trigger": "advance",
             "source": "menu",
             "dest": "state2",
             "conditions": "is_going_to_state2",
@@ -47,6 +53,7 @@ machine = TocMachine(
             "conditions": "is_going_to_menu",
         },
         {"trigger": "go_back", "source": ["SearchPlayer", "state2"], "dest": "user"},
+        {"trigger": "go_back", "source":"ShowPlayerTable", "dest": "SearchPlayer"},
     ],
     initial="user",
     auto_transitions=False,
@@ -143,5 +150,5 @@ def show_fsm():
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True,url_reloader=False)
     print("PPPPPPPPPPP",port)
