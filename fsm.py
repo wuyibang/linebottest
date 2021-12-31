@@ -8,9 +8,9 @@ class TocMachine(GraphMachine):
         self.machine = GraphMachine(model=self, **machine_configs)
         #self.machine.get_graph().draw("FSM.png",prog = 'dot',format="png")
 
-    def is_going_to_state1(self, event):
+    def is_going_to_SearchPlayer(self, event):
         text = event.message.text
-        return text.lower() == "1"
+        return text.lower() == "search player"
 
     def is_going_to_state2(self, event):
         text = event.message.text
@@ -20,8 +20,8 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "menu"
 
-    def on_enter_state1(self, event):
-        print("I'm entering state1")
+    def on_enter_SearchPlayer(self, event):
+        print("I'm entering search player")
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state1")
 
