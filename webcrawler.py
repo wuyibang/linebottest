@@ -2,16 +2,90 @@ import urllib.request as req
 from urllib.request import urlopen
 from urllib.error import HTTPError
 import bs4
+from bs4 import BeautifulSoup
 import requests, os
+import re
+
+namelist=["Clayton Kershaw","Mike Trout","Todd Helton","Shohei Ohtani","Buster Posey"]
+PitcherStat2021={"G":0,"IP":0,"W":0,"SO":0,"ERA":0,"WHIP":0,"WAR":0}
+BatterStat2021={"BA":0,"HR":0,"RBI":0,"SB":0,"OPS+":0,"WAR":0}
+# class PlayerInfo():
+#     def __init__(self):
+#         self.pos = ""
+#         self.status =""
+#         self.name=""
 
 def grab2021static(url):
     request=req.Request(url,headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"})
     with req.urlopen(request) as response:
         data=response.read().decode("utf-8")
     root=bs4.BeautifulSoup(data,"html.parser")
-    titles=root.find_all("div",id = "div_batting_standard")
-    temp = titles[0].th
-    print(temp)
+    titles_bat=root.find_all("tr",id="batting_standard.2021")
+    titles_pitching=root.find_all("tr",id="pitching_standard.2021")
+    pos = "batter"
+    if titles_bat == [] and titles_pitching == []:
+        return 0
+    
+
+    # print(titles[0].select_one("td").getText())
+    # node = titles[0].td
+    # node = node.find_next_siblings("td")
+    #print(node[3].text)
+
+    find_pos=root.find("p")
+    if "Pitcher" in find_pos.text:
+        pos = "pitcher"
+    if name == "Shohei Ohtani":
+        pos = "batter and pitcher"
+    print(pos)
+
+    career1=root.find("div",class_="p1")
+    ss=career1.text
+    career2=root.find("div",class_="p2")
+    ss2=career2.text
+    career3=root.find("div",class_="p3")
+    ss3=career3.text
+    #print(ss)
+    if pos == "pitcher":
+        stat2021=[float(s) for s in re.findall(r'-?\d+\.?\d*', ss)]
+        stat2021[2] = (int)(stat2021[2])
+        stat2021[3] = (int)(stat2021[3])
+        stat2021[4] = (int)(stat2021[4])
+        stat2021[5] = (int)(stat2021[5])
+        stat2021_2=[int(s) for s in re.findall(r'-?\d+\.?\d*', ss2)]
+        stat2021_3=[float(s) for s in re.findall(r'-?\d+\.?\d*', ss3)]
+        stat2021_3[2] = (int)(stat2021_3[2])
+        stat2021_3[3] = (int)(stat2021_3[3])
+        PitcherStat2021={"G":stat2021_2[0],"IP":stat2021_3[0],"W":stat2021[2],"SO":stat2021_3[2],"ERA":stat2021[6],"WHIP":stat2021_3[4],"WAR":stat2021[0]}
+        print(PitcherStat2021) 
+    elif pos == "batter":
+        stat2021=[float(s) for s in re.findall(r'-?\d+\.?\d*', ss)]
+        for i in range(8,10):
+            if stat2021[i] > 5.0:
+                stat2021[i] = stat2021[i] / 1000
+        stat2021[2] = (int)(stat2021[2])
+        stat2021[3] = (int)(stat2021[3])
+        stat2021[4] = (int)(stat2021[4])
+        stat2021[5] = (int)(stat2021[5])
+        stat2021[6] = (int)(stat2021[6])
+        stat2021[7] = (int)(stat2021[7])
+        stat2021_2=[int(s) for s in re.findall(r'-?\d+\.?\d*', ss2)]
+        stat2021_3=[float(s) for s in re.findall(r'-?\d+\.?\d*', ss3)]
+        for i in range(6):
+            if stat2021_3[i] > 5.0:
+                stat2021_3[i] = stat2021_3[i] / 1000
+        stat2021_3[6] = (int)(stat2021_3[6])
+        stat2021_3[7] = (int)(stat2021_3[7])
+        BatterStat2021={"BA":stat2021[8],"HR":stat2021[6],"RBI":stat2021_2[2],"SB":stat2021_2[4],"OPS+":stat2021_3[6],"WAR":stat2021[0]}
+        print(BatterStat2021) 
+    else: #shohei ohtani
+        BatterStat2021={"BA":0.257,"HR":46,"RBI":100,"SB":26,"OPS+":158,"WAR":9.1}
+        PitcherStat2021={"G":23,"IP":130.1,"W":9,"SO":156,"ERA":3.18,"WHIP":1.090,"WAR":9.1}
+        print(PitcherStat2021)
+        print(BatterStat2021) 
+    # elif:
+    # else:
+    # print(ss)
 
 def grabpic(url):
     request=req.Request(url,headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"})
@@ -25,7 +99,7 @@ def grabpic(url):
                 True
         except KeyError:
             continue
-        if "mlbam" in title["src"]:
+        if name in title["alt"]:
             print("found headphoto!!!")
             photo_url =title["src"]
             return photo_url
@@ -42,7 +116,7 @@ def grabsite(url,rr):
     # path = "output.txt"
     # f= open(path,"w",encoding="UTF-8")
     root=bs4.BeautifulSoup(data,"html.parser")
-    titles=root.find_all("span")
+    titles=root.find_all("h2")
     #titles=root.find_all("ul")
     for title in titles:
         try:
@@ -50,12 +124,13 @@ def grabsite(url,rr):
                 True
         except KeyError:
             continue
-        if name == title.string:
+        if ("Compare " + name + " to ")== title.string:
             print("founded!")
             return 1
     #print("found next")
     return 0
-name = "Buster Posey"
+name = namelist[3]
+print(name)
 namenew = name.lower()
 firstname = ""
 lastname = ""
@@ -86,6 +161,7 @@ while(1):
     else:
         rep = str(repeat)
     URL="https://www.baseball-reference.com/players/" + fullname + rep +".shtml"
+    print(URL)
     a=grabsite(URL,repeat)
     if a == 1:
         print("success")
@@ -104,8 +180,8 @@ elif a==2:
 
 if player_photo == "0":
     print("can't find photo")
-else:
-    print(player_photo)
+#else:
+#    print(player_photo)
 if not os.path.exists("images"):
         os.mkdir("images")  # 建立資料夾
 img = requests.get(player_photo)  # 下載圖片
@@ -114,3 +190,7 @@ with open("images\\" + name + str(index+1) + ".jpg", "wb") as file:  # 開啟資
     file.write(img.content)
 index += 1
 static2021 = grab2021static(player_url)
+player_status = "active"
+if static2021 == 0:
+    player_status = "retired"
+print(player_status)

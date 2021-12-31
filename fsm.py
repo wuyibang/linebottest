@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message
+from utils import send_text_message, send_button_message
 
 
 class TocMachine(GraphMachine):
@@ -25,9 +25,6 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state1")
 
-    # def on_exit_state1(self):
-    #     print("Leaving state1")
-
     def on_enter_state2(self, event):
         print("I'm entering state2")
 
@@ -38,3 +35,4 @@ class TocMachine(GraphMachine):
         print("I'm back")
         reply_token = event.reply_token
         send_text_message(reply_token, "MENU")
+        send_button_message(reply_token)
