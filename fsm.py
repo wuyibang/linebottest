@@ -34,9 +34,6 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state2")
 
-    # def on_exit_state2(self):
-    #     print("Leaving state2")
-
     def on_enter_menu(self, event):
         print("I'm back")
         reply_token = event.reply_token
