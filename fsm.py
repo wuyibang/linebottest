@@ -48,7 +48,7 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         print(event.message.text)
         playerName = event.message.text
-        send_text_message(reply_token, "show player table")
+        # send_text_message(reply_token, "show player table")
         reply_token = event.reply_token
         img_url = 'https://i.imgur.com/FBvQEoq.png'
         title = "Player Table"
