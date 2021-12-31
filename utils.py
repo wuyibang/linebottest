@@ -19,7 +19,7 @@ def send_button_message(reply_token):
                         TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
-                                thumbnail_image_url='https://scontent.fkhh1-1.fna.fbcdn.net/v/t39.30808-6/255449652_10159842146827451_9184073659691248629_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=730e14&_nc_ohc=4TVFlmw53j0AX_ZDFkK&tn=lhWMrKBn8VFPh4pU&_nc_ht=scontent.fkhh1-1.fna&oh=00_AT_givyWNg8x-gQFdc2nvsrzI7mfhZ6Hcvowjv1KXZ8sig&oe=61D38600D',
+                                thumbnail_image_url='https://i.imgur.com/FBvQEoq.png',
                                 title='Menu',
                                 text='Choose function',
                                 actions=[
