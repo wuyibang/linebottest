@@ -15,7 +15,7 @@ def send_text_message(reply_token, text):
 
 def send_button_message(reply_token):
     line_bot_api.reply_message(  # 回復傳入的訊息文字
-                        event.reply_token,
+                        reply_token,
                         TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
@@ -34,6 +34,7 @@ def send_button_message(reply_token):
                             )
                         )
                     )
+    return "OK"
 
 """
 def send_image_url(id, img_url):
