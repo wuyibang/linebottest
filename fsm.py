@@ -34,5 +34,5 @@ class TocMachine(GraphMachine):
     def on_enter_menu(self, event):
         print("I'm back")
         reply_token = event.reply_token
-        send_text_message(reply_token, "MENU")
+        #send_text_message(reply_token, "MENU")
         send_button_message(reply_token)
