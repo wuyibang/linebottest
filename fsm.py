@@ -46,7 +46,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_playerinfo_stat(self, event):
         text = event.message.text
-        return text == "2021 數據"
+        return text == "stat_2021"
 
     # def is_going_to_ShowPlayerTable(self, event):
     #     print("in state show player table")
@@ -110,8 +110,8 @@ class TocMachine(GraphMachine):
         img_url = Player_pic[num]
         title = name
         uptext = player_data[num]
-        labels = ["社群","2021 數據","上一頁"]
-        texts = ["社群","2021 數據","上一頁"]
+        labels = ["社群","stat_2021","上一頁"]
+        texts = ["社群","stat_2021","上一頁"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
 
     def on_enter_playerinfo_media(self, event):
