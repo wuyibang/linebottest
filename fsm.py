@@ -107,7 +107,7 @@ class TocMachine(GraphMachine):
                 break
         img_url = Player_pic[num]
         title = name
-        uptext = player_data[i]
+        uptext = player_data[num]
         labels = ["社群","2021 數據","上一頁"]
         texts = ["社群","2021 數據","上一頁"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
@@ -116,11 +116,12 @@ class TocMachine(GraphMachine):
         print("Show player media")
         reply_token = event.reply_token
         name = event.message.text
+        num = 0
         for i in range(len(STARPLAYER)):
             if STARPLAYER[i] == name:
                 num = i
                 break
-        url = Player_media[i]
+        url = Player_media[num]
         send_text_message(reply_token,url)
         self.go_back()
 
