@@ -27,7 +27,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_teaminfo(self, event):
         text = event.message.text
-        if text == "FB" or text == "LION CREW" or text == "YOUTUBE" or text == "MENU":
+        if text == "FB" or text == "LIONCREW" or text == "YOUTUBE" or text == "IG":
             return True
 
     def is_going_to_playerinfo(self, event):
@@ -83,6 +83,20 @@ class TocMachine(GraphMachine):
             url = 'https://lioncrew.uni-lions.com.tw/'
         send_text_message(reply_token,url)
         self.go_back()
+    
+    def on_enter_playerinfo(self, event):
+        print("Show hottest player")
+        reply_token = event.reply_token
+        BryceHarper='https://i.imgur.com/ZiGDrQF.jpg'
+        ShoheiOhtani='https://i.imgur.com/uSXrQtj.jpg'
+        Tatis='https://i.imgur.com/qPBLtml.png'
+        vladmir='https://i.imgur.com/GB9Bwqs.jpg'
+        cole = 'https://i.imgur.com/N2YkKDC.png'
+        degrom='https://i.imgur.com/2wQimWd.png'
+        imglinks=[BryceHarper,ShoheiOhtani,Tatis,vladmir,cole,degrom]
+        labels=["Harper","Ohtani","Tatis","Guerrero","Cole","deGrom"]
+        texts=["Harper","Ohtani","Tatis","Guerrero","Cole","deGrom"]
+        send_image_carousel(reply_token, imglinks, labels, texts)
 
     # def on_enter_ShowHottestPlayer(self, event):
     #     print("Show hottest player")

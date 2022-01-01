@@ -56,7 +56,7 @@ def send_button_message(reply_token, img, title, uptext, labels, texts):
             actions=acts
         )
     )
-    line_bot_api.reply_message(reply_token, message)
+    line_bot_api.push_message(reply_token, message)
     return "OK"
 def send_image_carousel(reply_token, imglinks, labels, texts):
     line_bot_api = LineBotApi(channel_access_token)
