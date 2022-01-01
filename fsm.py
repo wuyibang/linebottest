@@ -18,7 +18,8 @@ class TocMachine(GraphMachine):
 
     def is_going_to_asplayer(self, event):
         text = event.message.text
-        if text == "球員介紹" or text=="上一頁"
+        if text == "球員介紹" or text=="上一頁":
+            return True
 
     def is_going_to_ug(self, event):
         text = event.message.text
