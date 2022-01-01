@@ -77,10 +77,3 @@ def send_image_carousel(reply_token, imglinks, labels, texts):
     )
     line_bot_api.reply_message(reply_token, message)
     return "OK"
-"""
-def send_image_url(id, img_url):
-    pass
-
-def send_button_message(id, text, buttons):
-    pass
-"""

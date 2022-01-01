@@ -2,7 +2,7 @@ from transitions.extensions import GraphMachine
 
 from utils import send_text_message, send_button_message, send_image_carousel
 #from webcrawler import searchplayer
-
+hot=["BryceHarper","ShoheiOhtani","Tatis","VladmirGuerrero","Cole","degrom"]
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
@@ -20,7 +20,10 @@ class TocMachine(GraphMachine):
     def is_going_to_ShowHottestPlayer(self, event):
         text = event.message.text
         return text.lower() == "show hottest player"
-
+    def is_going_to_ShowHottestPlayer(self, event):
+        text = event.message.text
+        if text in hot:
+            return True
     def is_going_to_menu(self, event):
         text = event.message.text
         return text.lower() == "menu"
@@ -40,10 +43,15 @@ class TocMachine(GraphMachine):
         cole = 'https://i.imgur.com/N2YkKDC.png'
         degrom='https://i.imgur.com/2wQimWd.png'
         imglinks=[BryceHarper,ShoheiOhtani,Tatis,vladmir,cole,degrom]
-        labels=["BryceHarper","ShoheiOhtani","Tatis","vladmir","cole","degrom"]
-        texts=["BryceHarper","ShoheiOhtani","Tatis","vladmir","cole","degrom"]
+        labels=["BryceHarper","ShoheiOhtani","Tatis","VladmirGuerrero","Cole","degrom"]
+        texts=["BryceHarper","ShoheiOhtani","Tatis","VladmirGuerrero","Cole","degrom"]
         send_image_carousel(reply_token, imglinks, labels, texts)
-
+    def on_enter_Hottest(self, event):
+        reply_token = event.reply_token
+        HotName=event.message.text
+        if HotName == hot[0]:
+            send_text_message(reply_token, HotName +"Team:PHI\nPOS:Right fielder\n2021, 2015 NL MVP")
+        self.go_back()
     def on_enter_menu(self, event):
         print("In menu")
         reply_token = event.reply_token
