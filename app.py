@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "SearchPlayer", "ShowHottestPlayer","menu","ShowPlayerTable","Hottest"],
+    states=["user", "menu","teamlions","asplayer","ug","teaminfo","playerinfo","playerinfo_media","playerinfo_stat","playersong","uginfo","uginfo_ig"],
     transitions=[
         {
             "trigger": "advance",
@@ -25,48 +25,52 @@ machine = TocMachine(
         {
             "trigger": "advance",
             "source": "menu",
-            "dest": "SearchPlayer",
-            "conditions": "is_going_to_SearchPlayer",
-        },
-        {
-            "trigger": "advance",
-            "source": "SearchPlayer",
-            "dest": "ShowPlayerTable",
-            "conditions": "is_going_to_ShowPlayerTable",
-        },
-        {
-            "trigger": "advance",
-            "source": "ShowHottestPlayer",
-            "dest": "Hottest",
-            "conditions": "is_going_to_Hottest",
-        },
-        {
-            "trigger": "advance",
-            "source": "SearchPlayer",
-            "dest": "menu",
-            "conditions": "is_going_to_menu",
-        },
-        {
-            "trigger": "advance",
-            "source": "ShowPlayerTable",
-            "dest": "menu",
-            "conditions": "is_going_to_menu",
+            "dest": "teamlions",
+            "conditions": "is_going_to_teamlions",
         },
         {
             "trigger": "advance",
             "source": "menu",
-            "dest": "ShowHottestPlayer",
-            "conditions": "is_going_to_ShowHottestPlayer",
+            "dest": "asplayer",
+            "conditions": "is_going_to_asplayer",
         },
         {
             "trigger": "advance",
-            "source": "ShowHottestPlayer",
-            "dest": "menu",
-            "conditions": "is_going_to_menu",
+            "source": "menu",
+            "dest": "ug",
+            "conditions": "is_going_to_ug",
         },
-        {"trigger": "go_back", "source": ["SearchPlayer", "ShowHottestPlayer"], "dest": "user"},
-        {"trigger": "go_back", "source":"ShowPlayerTable", "dest": "SearchPlayer"},
-        {"trigger": "go_back", "source":"Hottest", "dest": "ShowHottestPlayer"},
+        {
+            "trigger": "advance",
+            "source": "teamlions",
+            "dest": "teaminfo",
+            "conditions": "is_going_to_teaminfo",
+        },
+        {
+            "trigger": "advance",
+            "source": "asplayer",
+            "dest": "playerinfo",
+            "conditions": "is_going_to_playerinfo",
+        },
+        {
+            "trigger": "advance",
+            "source": "playerinfo",
+            "dest": "playerinfo_ig",
+            "conditions": "is_going_to_playerinfo_media",
+        },
+        {
+            "trigger": "advance",
+            "source": "playerinfo",
+            "dest": "playerinfo_stat",
+            "conditions": "is_going_to_playerinfo_stat",
+        },
+        {
+            "trigger": "advance",
+            "source": "playerinfo",
+            "dest": "asplayer",
+            "conditions": "is_going_to_asplayer",
+        },
+        {"trigger": "go_back", "source":"teaminfo", "dest": "teamlions"},
     ],
     initial="user",
     auto_transitions=False,
