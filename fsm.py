@@ -1,7 +1,7 @@
 from transitions.extensions import GraphMachine
 
 from utils import send_text_message, send_button_message
-
+from webcrawler.py import searchplayer
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -48,9 +48,10 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         print(event.message.text)
         playerName = event.message.text
+        p = searchplayer(playerName)
         # send_text_message(reply_token, "show player table")
         reply_token = event.reply_token
-        img_url = 'https://i.imgur.com/FBvQEoq.png'
+        img_url = p.picURL
         title = "Player Table"
         uptext = "Check "+playerName+ " 2021 and career stats"
         labels = ["2021 stats","Career stats"]
