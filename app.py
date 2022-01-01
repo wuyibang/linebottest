@@ -48,7 +48,7 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
-            "source": "ShowHottestPlayer",
+            "source": "ShowPlayerTable",
             "dest": "menu",
             "conditions": "is_going_to_menu",
         },
