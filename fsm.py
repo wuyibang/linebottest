@@ -131,23 +131,23 @@ class TocMachine(GraphMachine):
         print("Show player media")
         reply_token = event.reply_token
         name = event.message.text
-        st = ""
-        if now == 0:
-            st = "G:114\nAVG:.308 HR:16\nSB:17 OPS+:151.8\n2021 最佳十人外野手\n2021 全壘打王第二名"
-        elif now == 1:
-            st = "G:105\nAVG:.277 HR:8\nSB:15 OPS+:116.4\n2021 達成生涯100HR"
-        elif now == 2:
-            st = "G:104\nAVG:.320 H:128\nSB:22 OPS+:131.7\n2021 最佳十人外野手\n2021 打擊王第二名"
-        elif now == 3:
-            st = "G:116\nAVG:.303 H:135\nSB:23 OPS+:109.3\n2021 最佳十人二壘手\n2021 盜壘王 安打王第二名\n2021 二壘金手套"
-        elif now == 4:
-            st = "G:91\nAVG:.276 H:74\nOBP:.345 OPS+:98.7\n2021 最佳十人補手\n2021 捕手金手套"
-        elif now == 5:
-            st = "IP:62.2\nERA:4.59 SO:52\nK/BB:2.43 FIP:3.32\n2021 選秀第一輪"
-        elif now == 6:
-            st = "G:52\nSV:32 ERA:1.46\nK/BB:3.07 WHIP:1.07\n2021 救援王\n2021 達成生涯100SV"
-        elif now == 7:
-            st = "IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25\n2021 單季破百局百K"
+        # st = ""
+        # if now == 0:
+        #     st = "G:114\nAVG:.308 HR:16\nSB:17 OPS+:151.8\n2021 最佳十人外野手\n2021 全壘打王第二名"
+        # elif now == 1:
+        #     st = "G:105\nAVG:.277 HR:8\nSB:15 OPS+:116.4\n2021 達成生涯100HR"
+        # elif now == 2:
+        #     st = "G:104\nAVG:.320 H:128\nSB:22 OPS+:131.7\n2021 最佳十人外野手\n2021 打擊王第二名"
+        # elif now == 3:
+        #     st = "G:116\nAVG:.303 H:135\nSB:23 OPS+:109.3\n2021 最佳十人二壘手\n2021 盜壘王 安打王第二名\n2021 二壘金手套"
+        # elif now == 4:
+        #     st = "G:91\nAVG:.276 H:74\nOBP:.345 OPS+:98.7\n2021 最佳十人補手\n2021 捕手金手套"
+        # elif now == 5:
+        #     st = "IP:62.2\nERA:4.59 SO:52\nK/BB:2.43 FIP:3.32\n2021 選秀第一輪"
+        # elif now == 6:
+        #     st = "G:52\nSV:32 ERA:1.46\nK/BB:3.07 WHIP:1.07\n2021 救援王\n2021 達成生涯100SV"
+        # elif now == 7:
+        st = "IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25\n2021 單季破百局百K"
         send_text_message(reply_token,st)
         self.go_back()
 
