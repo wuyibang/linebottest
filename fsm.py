@@ -14,7 +14,8 @@ class TocMachine(GraphMachine):
     def is_going_to_ShowPlayerTable(self, event):
         print("in state show player table")
         text = event.message.text
-        return True
+        if text.lower() != "menu":
+            return True
 
     def is_going_to_ShowHottestPlayer(self, event):
         text = event.message.text
