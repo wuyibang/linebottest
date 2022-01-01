@@ -1,7 +1,7 @@
 from transitions.extensions import GraphMachine
 
 from utils import send_text_message, send_button_message
-from webcrawler.py import searchplayer
+from webcrawler import searchplayer
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
