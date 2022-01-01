@@ -66,6 +66,7 @@ machine = TocMachine(
         },
         {"trigger": "go_back", "source": ["SearchPlayer", "ShowHottestPlayer"], "dest": "user"},
         {"trigger": "go_back", "source":"ShowPlayerTable", "dest": "SearchPlayer"},
+        {"trigger": "go_back", "source":"Hottest", "dest": "SHowHottestPlayer"},
     ],
     initial="user",
     auto_transitions=False,

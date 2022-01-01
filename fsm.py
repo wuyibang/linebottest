@@ -19,7 +19,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_ShowHottestPlayer(self, event):
         text = event.message.text
-        return text.lower() == "show hottest player"
+        return text.lower() == "stra player"
     def is_going_to_Hottest(self, event):
         text = event.message.text
         if text in hot:
@@ -53,6 +53,8 @@ class TocMachine(GraphMachine):
             send_text_message(reply_token, HotName +"Team:PHI\nPOS:RF\n2021, 2015 NL MVP")
         elif HotName == hot[1]:
             send_text_message(reply_token, HotName +"Team:LAA\nPOS:P, DH\n2021 AL MVP\n2018 AL ROY")
+        elif HotName == hot[2]:
+            send_text_message(reply_token, HotName +"Team:SD\nPOS:SS, OF\n2021 Silver Slugger\nRising Star")
         self.go_back()
     def on_enter_menu(self, event):
         print("In menu")
@@ -60,8 +62,8 @@ class TocMachine(GraphMachine):
         img_url = 'https://i.imgur.com/FBvQEoq.png'
         title = "Menu"
         uptext = "Check player 2021 and career stats"
-        labels = ["Search player","Show hottest player"]
-        texts = ["Search player","Show hottest player"]
+        labels = ["Search player","Star player"]
+        texts = ["Search player","Star player"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
     def on_enter_ShowPlayerTable(self,event):
         reply_token = event.reply_token
