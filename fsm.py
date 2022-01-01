@@ -99,6 +99,17 @@ class TocMachine(GraphMachine):
         texts=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
         send_image_carousel(reply_token, imglinks, labels, texts)
 
+    def on_enter_playerinfo(self, event):
+        print("IN TEAMLIONS")
+        reply_token = event.reply_token
+        name = event.message.text
+        img_url=Player_img[name]
+        title = "統一獅_球隊介紹"
+        uptext = "查看球隊社群及官方商城"
+        labels = ["IG","FB","YOUTUBE","LIONCREW"]
+        texts = ["IG","FB","YOUTUBE","LIONCREW"]
+        send_button_message(reply_token,img_url,title,uptext,labels,texts)
+
     # def on_enter_ShowHottestPlayer(self, event):
     #     print("Show hottest player")
     #     reply_token = event.reply_token
