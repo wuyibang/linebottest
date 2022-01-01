@@ -20,7 +20,7 @@ class TocMachine(GraphMachine):
     def is_going_to_ShowHottestPlayer(self, event):
         text = event.message.text
         return text.lower() == "show hottest player"
-    def is_going_to_ShowHottestPlayer(self, event):
+    def is_going_to_Hottest(self, event):
         text = event.message.text
         if text in hot:
             return True
@@ -50,7 +50,9 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         HotName=event.message.text
         if HotName == hot[0]:
-            send_text_message(reply_token, HotName +"Team:PHI\nPOS:Right fielder\n2021, 2015 NL MVP")
+            send_text_message(reply_token, HotName +"Team:PHI\nPOS:RF\n2021, 2015 NL MVP")
+        elif HotName == hot[1]:
+            send_text_message(reply_token, HotName +"Team:LAA\nPOS:P, DH\n2021 AL MVP\n2018 AL ROY")
         self.go_back()
     def on_enter_menu(self, event):
         print("In menu")
