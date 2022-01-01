@@ -1,7 +1,6 @@
 import urllib.request as req
 from urllib.request import urlopen
 from urllib.error import HTTPError
-import bs4
 from bs4 import BeautifulSoup
 import requests
 import re
