@@ -55,7 +55,7 @@ machine = TocMachine(
         {
             "trigger": "advance",
             "source": "playerinfo",
-            "dest": "playerinfo_ig",
+            "dest": "playerinfo_media",
             "conditions": "is_going_to_playerinfo_media",
         },
         {

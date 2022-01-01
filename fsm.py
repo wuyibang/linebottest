@@ -6,6 +6,7 @@ STARPLAYER=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智�
 Player_img={"林安可":"https://i.imgur.com/Lxf4h5q.png","蘇智傑":"https://i.imgur.com/u5t2HSq.png","陳傑憲":"https://i.imgur.com/QYPWtnm.png","林靖凱":"https://i.imgur.com/HaPr7f7.png","林岱安":"https://i.imgur.com/ErNTsIu.jpg","胡智為":"https://i.imgur.com/JmKFXB4.png","陳韻文":"https://i.imgur.com/pe63Sc1.png","古林睿煬":"https://i.imgur.com/fP0NVC4.png"}
 Player_pic=['https://i.imgur.com/p9f43YQ.png','https://i.imgur.com/Z93xq2s.png','https://i.imgur.com/p1Txo3R.png','https://i.imgur.com/RyVGii0.png','https://i.imgur.com/PFOPip5.png','https://i.imgur.com/ME2rd9v.png','https://i.imgur.com/KCHEFVA.png','https://i.imgur.com/PdsKGPy.png']
 Player_media=['https://www.facebook.com/ankolin1997','https://www.instagram.com/ccsu.32/','https://www.instagram.com/hsien_1994','https://www.instagram.com/c.k.lin_64_/','https://www.instagram.com/lin_dai.an168/','https://www.facebook.com/profile.php?id=100044237085864','https://www.instagram.com/lions_cyw12/','https://www.instagram.com/612_lao/']
+player_data=["NO.77 RF 左投左打","NO.32 LF 右投左打","NO.24 CF 右投左打","NO.64 2B 右投右打","NO.31 C 右投右打","NO.58 SP 右投","NO.12 CP 右投","NO.19 SP 右投"]
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -105,7 +106,7 @@ class TocMachine(GraphMachine):
                 break
         img_url = Player_pic[i]
         title = name
-        uptext = "查看球員"
+        uptext = player_data[i]
         labels = ["社群","2021 數據","上一頁"]
         texts = ["社群","2021 數據","上一頁"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
@@ -123,9 +124,22 @@ class TocMachine(GraphMachine):
     def on_enter_playerinfo_stat(self, event):
         print("Show player media")
         name = event.message.text
-
-        send_text_message(reply_token,url)
-
+        if name == "林安可":
+            send_text_message(reply_token,"G:114\nAVG:.308 HR:16\nSB:17 OPS+:151.8\n2021 最佳十人外野手\n2021 全壘打王第二名")
+        elif name == "蘇智傑":
+            send_text_message(reply_token,"G:105\nAVG:.277 HR:8\nSB:15 OPS+:116.4\n2021 達成生涯100HR")
+        elif name == "陳傑憲":
+            send_text_message(reply_token,"G:104\nAVG:.320 H:128\nSB:22 OPS+:131.7\n2021 最佳十人外野手\n2021 打擊王第二名")
+        elif name == "林靖凱":
+            send_text_message(reply_token,"G:116\nAVG:.303 H:135\nSB:23 OPS+:109.3\n2021 最佳十人二壘手\n2021 盜壘王 安打王第二名\n2021 二壘金手套")
+        elif name == "林岱安":
+            send_text_message(reply_token,"G:91\nAVG:.276 H:74\nOBP:.345 OPS+:98.7\n2021 最佳十人補手\n2021 捕手金手套")
+        elif name == "胡智為":
+            send_text_message(reply_token,"IP:62.2\nERA:4.59 SO:52\nK/BB:2.43 FIP:3.32\n2021 選秀第一輪")
+        elif name == "陳韻文":
+            send_text_message(reply_token,"G:52\nSV:32 ERA:1.46\nK/BB:3.07 WHIP:1.07\n2021 救援王\n2021 達成生涯100SV")
+        elif name == "古林睿煬":
+            send_text_message(reply_token,"IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25\n2021 單季破百局百K")
 
     # def on_enter_ShowHottestPlayer(self, event):
     #     print("Show hottest player")
