@@ -113,6 +113,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_playerinfo_media(self, event):
         print("Show player media")
+        reply_token = event.reply_token
         name = event.message.text
         for i in range(len(STARPLAYER)):
             if STARPLAYER[i] == name:
@@ -120,9 +121,11 @@ class TocMachine(GraphMachine):
                 break
         url = Player_media[i]
         send_text_message(reply_token,url)
+        self.go_back()
 
     def on_enter_playerinfo_stat(self, event):
         print("Show player media")
+        reply_token = event.reply_token
         name = event.message.text
         if name == "林安可":
             send_text_message(reply_token,"G:114\nAVG:.308 HR:16\nSB:17 OPS+:151.8\n2021 最佳十人外野手\n2021 全壘打王第二名")
@@ -140,6 +143,7 @@ class TocMachine(GraphMachine):
             send_text_message(reply_token,"G:52\nSV:32 ERA:1.46\nK/BB:3.07 WHIP:1.07\n2021 救援王\n2021 達成生涯100SV")
         elif name == "古林睿煬":
             send_text_message(reply_token,"IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25\n2021 單季破百局百K")
+        self.go_back()
 
     # def on_enter_ShowHottestPlayer(self, event):
     #     print("Show hottest player")
