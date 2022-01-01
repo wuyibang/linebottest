@@ -7,7 +7,7 @@ Player_img={"林安可":"https://i.imgur.com/Lxf4h5q.png","蘇智傑":"https://i
 Player_pic=['https://i.imgur.com/p9f43YQ.png','https://i.imgur.com/Z93xq2s.png','https://i.imgur.com/p1Txo3R.png','https://i.imgur.com/RyVGii0.png','https://i.imgur.com/PFOPip5.png','https://i.imgur.com/ME2rd9v.png','https://i.imgur.com/KCHEFVA.png','https://i.imgur.com/PdsKGPy.png']
 Player_media=['https://www.facebook.com/ankolin1997','https://www.instagram.com/ccsu.32/','https://www.instagram.com/hsien_1994','https://www.instagram.com/c.k.lin_64_/','https://www.instagram.com/lin_dai.an168/','https://www.facebook.com/profile.php?id=100044237085864','https://www.instagram.com/lions_cyw12/','https://www.instagram.com/612_lao/']
 player_data=["NO.77 RF 左投左打","NO.32 LF 右投左打","NO.24 CF 右投左打","NO.64 2B 右投右打","NO.31 C 右投右打","NO.58 SP 右投","NO.12 CP 右投","NO.19 SP 右投"]
-now=9
+global now=9
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
