@@ -88,7 +88,7 @@ class TocMachine(GraphMachine):
     def on_enter_asplayer(self, event):
         print("Show hottest player")
         reply_token = event.reply_token
-        imglinks=[Player_img["林安可"],Player_img["蘇智傑"],Player_img["陳傑憲"],Player_img["林靖凱"],Player_img["林岱安"],Player_img["胡智為"],Player_img["陳韻文"],Player_img["古林睿煬"]]
+        imglinks=['https://i.imgur.com/Lxf4h5q.png','https://i.imgur.com/u5t2HSq.png','https://i.imgur.com/QYPWtnm.png','https://i.imgur.com/HaPr7f7.png','https://i.imgur.com/ErNTsIu.jpg', 'https://i.imgur.com/JmKFXB4.png' , 'https://i.imgur.com/pe63Sc1.png' , 'https://i.imgur.com/fP0NVC4.png']
         labels=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
         texts=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
         send_image_carousel(reply_token, imglinks, labels, texts)
