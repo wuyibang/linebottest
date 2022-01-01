@@ -3,7 +3,7 @@ from transitions.extensions import GraphMachine
 from utils import send_text_message, send_button_message, send_image_carousel
 #from webcrawler import searchplayer
 STARPLAYER=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
-Player_img={"林安可":"/images/77.jpg","蘇智傑":"/images/32.jpg","陳傑憲":"/images/24.jpg","林靖凱":"/images/64.jpg","林岱安":"/images/31.jpg","胡智為":"/images/58.jpg","陳韻文":"/images/12.jpg","古林睿煬":"/images/19.jpg"}
+Player_img={"林安可":"https://i.imgur.com/Lxf4h5q.png","蘇智傑":"https://i.imgur.com/u5t2HSq.png","陳傑憲":"https://i.imgur.com/QYPWtnm.png","林靖凱":"https://i.imgur.com/HaPr7f7.png","林岱安":"https://i.imgur.com/ErNTsIu.jpg","胡智為":"https://i.imgur.com/JmKFXB4.png","陳韻文":"https://i.imgur.com/pe63Sc1.png","古林睿煬":"https://i.imgur.com/fP0NVC4.png"}
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -88,12 +88,6 @@ class TocMachine(GraphMachine):
     def on_enter_asplayer(self, event):
         print("Show hottest player")
         reply_token = event.reply_token
-        BryceHarper='https://i.imgur.com/ZiGDrQF.jpg'
-        ShoheiOhtani='https://i.imgur.com/uSXrQtj.jpg'
-        Tatis='https://i.imgur.com/qPBLtml.png'
-        vladmir='https://i.imgur.com/GB9Bwqs.jpg'
-        cole = 'https://i.imgur.com/N2YkKDC.png'
-        degrom='https://i.imgur.com/2wQimWd.png'
         imglinks=[Player_img["林安可"],Player_img["蘇智傑"],Player_img["陳傑憲"],Player_img["林靖凱"],Player_img["林岱安"],Player_img["胡智為"],Player_img["陳韻文"],Player_img["古林睿煬"]]
         labels=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
         texts=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]

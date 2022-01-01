@@ -64,7 +64,7 @@ def send_image_carousel(reply_token, imglinks, labels, texts):
     for i, url in enumerate(imglinks):
         cols.append(
             ImageCarouselColumn(
-                image_url=url,
+                image_url="'"=url+"'",
                 action=MessageTemplateAction(
                     label=labels[i],
                     text=texts[i]
