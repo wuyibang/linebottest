@@ -58,7 +58,7 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         img_url='https://scontent.ftpe7-3.fna.fbcdn.net/v/t1.6435-9/154390270_3704869296216919_5811957785118764227_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=3tGQNnW_U7oAX82VFrP&_nc_ht=scontent.ftpe7-3.fna&oh=00_AT8f0L3oj3BSq6u4BYWCp62OoA5tRaE_7xjP8j1GhhDRsw&oe=61F62C8B'
         title = "統一獅UNILIONS"
-        uptext = "中華職棒台南球隊，點取下列按鈕查看相關資訊"
+        uptext = "中華職棒台南球隊，點取下列按鈕查看相關資訊(隨時想回選單請輸入menu)"
         labels = ["球隊介紹","球員介紹","啦啦隊介紹"]
         texts = ["球隊介紹","球員介紹","啦啦隊介紹"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
@@ -100,11 +100,12 @@ class TocMachine(GraphMachine):
         print("IN TEAMLIONS")
         reply_token = event.reply_token
         name = event.message.text
+        num = 0
         for i in range(len(STARPLAYER)):
             if STARPLAYER[i] == name:
                 num = i
                 break
-        img_url = Player_pic[i]
+        img_url = Player_pic[num]
         title = name
         uptext = player_data[i]
         labels = ["社群","2021 數據","上一頁"]

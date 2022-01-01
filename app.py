@@ -71,6 +71,8 @@ machine = TocMachine(
             "conditions": "is_going_to_asplayer",
         },
         {"trigger": "go_back", "source":"teaminfo", "dest": "teamlions"},
+        {"trigger": "go_back", "source":"playerinfo_media", "dest": "playerinfo"},
+        {"trigger": "go_back", "source":"playerinfo_stat", "dest": "playerinfo"},
     ],
     initial="user",
     auto_transitions=False,
