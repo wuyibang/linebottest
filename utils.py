@@ -75,7 +75,7 @@ def send_image_carousel(reply_token, imglinks, labels, texts):
         alt_text='ImageCarousel template',
         template=ImageCarouselTemplate(columns=cols)
     )
-    line_bot_api.push_message(reply_token, message)
+    line_bot_api.reply_message(reply_token, message)
     return "OK"
 """
 def send_image_url(id, img_url):
