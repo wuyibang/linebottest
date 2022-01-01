@@ -118,14 +118,9 @@ class TocMachine(GraphMachine):
         print("Show player media")
         reply_token = event.reply_token
         name = event.message.text
-        num = 0
-        for i in range(len(STARPLAYER)):
-            if STARPLAYER[i] == name:
-                num = i
-                break
-        url = Player_media[num]
+        url = Player_media[now]
         send_text_message(reply_token,url)
-        # self.go_back()
+        self.go_back()
 
     def on_enter_playerinfo_stat(self, event):
         print("Show player media")
@@ -149,7 +144,7 @@ class TocMachine(GraphMachine):
         # elif now == 7:
         st = "IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25\n2021 單季破百局百K"
         send_text_message(reply_token,st)
-    #     self.go_back()
+        self.go_back()
     # def on_exit_playerinfo_media(self):
     #     print("Leaving media")
     # def on_exit_playerinfo_stat(self):
