@@ -27,7 +27,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_teaminfo(self, event):
         text = event.message.text
-        if text == "FB" or text == "LION CREW" or text == "YOUTUBE" or text == "MENU"
+        if text == "FB" or text == "LION CREW" or text == "YOUTUBE" or text == "MENU":
             return True
 
     def is_going_to_playerinfo(self, event):
