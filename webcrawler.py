@@ -1,8 +1,9 @@
 import urllib.request as req
 from urllib.request import urlopen
 from urllib.error import HTTPError
+import bs4
 from bs4 import BeautifulSoup
-import requests, os
+import requests
 import re
 
 namelist=["Clayton Kershaw","Mike Trout","Todd Helton","Shohei Ohtani","Buster Posey"]
@@ -184,13 +185,13 @@ def searchplayer(name):
         print("can't find photo")
     #else:
     #    print(player_photo)
-    if not os.path.exists("images"):
-            os.mkdir("images")  # 建立資料夾
-    img = requests.get(player_photo)  # 下載圖片
-    index = 0
-    with open("images\\" + name + str(index+1) + ".jpg", "wb") as file:  # 開啟資料夾及命名圖片檔
-        file.write(img.content)
-    index += 1
+    # if not os.path.exists("images"):
+    #         os.mkdir("images")  # 建立資料夾
+    # img = requests.get(player_photo)  # 下載圖片
+    # index = 0
+    # with open("images\\" + name + str(index+1) + ".jpg", "wb") as file:  # 開啟資料夾及命名圖片檔
+    #     file.write(img.content)
+    # index += 1
     static2021 = grab2021static(player_url)
     p.status = "active"
     if static2021 == 0:
