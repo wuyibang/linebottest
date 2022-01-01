@@ -1,7 +1,7 @@
 from transitions.extensions import GraphMachine
 
 from utils import send_text_message, send_button_message
-from webcrawler import searchplayer
+#from webcrawler import searchplayer
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -16,9 +16,9 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return True
 
-    def is_going_to_state2(self, event):
+    def is_going_to_ShowHottestPlayer(self, event):
         text = event.message.text
-        return text.lower() == "2"
+        return text.lower() == "Show hottest player"
 
     def is_going_to_menu(self, event):
         text = event.message.text
@@ -29,11 +29,19 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "Search player\nPlease enter player's full name\nEx:Mike Trout")
 
-    def on_enter_state2(self, event):
-        print("I'm entering state2")
-
+    def on_enter_ShowHottestPlayer(self, event):
+        print("Show hottest player")
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state2")
+        BryceHarper='https://i.imgur.com/ZiGDrQF.jpg'
+        ShoheiOhtani='https://i.imgur.com/uSXrQtj.jpg'
+        Tatis='https://i.imgur.com/qPBLtml.png'
+        vladmir='https://i.imgur.com/GB9Bwqs.jpg'
+        cole = 'https://i.imgur.com/N2YkKDC.png'
+        degrom='https://i.imgur.com/2wQimWd.png'
+        imglinks=[BryceHarper,ShoheiOhtani,Tatis,vladmir,cole,degrom]
+        labels=["BryceHarper","ShoheiOhtani","Tatis","vladmir","cole","degrom"]
+        texts=["BryceHarper","ShoheiOhtani","Tatis","vladmir","cole","degrom"]
+        send_image_carousel(reply_token, imglinks, labels, texts)
 
     def on_enter_menu(self, event):
         print("In menu")
@@ -48,10 +56,10 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         print(event.message.text)
         playerName = event.message.text
-        p = searchplayer(playerName)
+        # p = searchplayer(playerName)
         # send_text_message(reply_token, "show player table")
         reply_token = event.reply_token
-        img_url = p.picURL
+        img_url = 'https://i.imgur.com/FBvQEoq.png'
         title = "Player Table"
         uptext = "Check "+playerName+ " 2021 and career stats"
         labels = ["2021 stats","Career stats"]
