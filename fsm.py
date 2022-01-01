@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, send_button_message
+from utils import send_text_message, send_button_message, send_image_carousel
 #from webcrawler import searchplayer
 
 class TocMachine(GraphMachine):
@@ -18,7 +18,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_ShowHottestPlayer(self, event):
         text = event.message.text
-        return text.lower() == "Show hottest player"
+        return text.lower() == "show hottest player"
 
     def is_going_to_menu(self, event):
         text = event.message.text
