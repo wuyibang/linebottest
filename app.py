@@ -15,7 +15,7 @@ load_dotenv()
 machines={}
 def create_machine():
     machine = TocMachine(
-        states=["user", "menu","teamlions","asplayer","ug","teaminfo","playerinfo","playerinfo_media","playerinfo_stat","playersong","uginfo","uginfo_ig","player_song"],
+        states=["user", "menu","teamlions","asplayer","ug","teaminfo","playerinfo","playerinfo_media","playerinfo_stat","uginfo","uginfo_ig","player_song"],
         transitions=[
             {
                 "trigger": "advance",
@@ -143,9 +143,6 @@ def create_machine():
                 "dest": "asplayer",
                 "conditions": "is_going_to_asplayer",
             },
-            {"trigger": "go_back", "source":"teaminfo", "dest": "teamlions"},
-            {"trigger": "go_back", "source":"playerinfo_media", "dest": "playerinfo"},
-            {"trigger": "go_back", "source":"playerinfo_stat", "dest": "playerinfo"},
         ],
         initial="user",
         auto_transitions=False,
@@ -234,20 +231,15 @@ def webhook_handler():
         #response = machine.advance(event)
         print(f"\nFSM STATE: {machines[event.source.user_id].state}")
         if response == False:
-            send_text_message(event.reply_token, "Not Entering any State")
+            send_text_message(event.reply_token, "Enter 'menu' to back to menu or click the button")
 
     return "OK"
 
 
 @app.route("/showfsm", methods=["GET"])
 def show_fsm():
-    machine.get_graph().draw("fsm2.png", prog="dot", format="png")
-    return send_file("fsm2.png", mimetype="image/png")
-
-# @handler.add(MessageEvent, message=TextMessage)
-# def handle_message(event):
-#     message = TextSendMessage(text=event.message.text)
-#     line_bot_api.reply_message(event.reply_token,"吳逸邦好帥")
+    machine.get_graph().draw("FSM_UNILIONS.png", prog="dot", format="png")
+    return send_file("FSM_UNILIONS.png", mimetype="image/png")
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
