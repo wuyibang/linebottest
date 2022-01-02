@@ -209,7 +209,7 @@ class TocMachine(GraphMachine):
         texts = [ UG_NAME[num]+"IG", "上一頁"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
 
-    def on_enter_playerinfo_uginfo_ug(self, event):
+    def on_enter_playerinfo_uginfo_ig(self, event):
         print("Show player media")
         reply_token = event.reply_token
         name = event.message.text
