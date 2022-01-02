@@ -49,6 +49,12 @@ machine = TocMachine(
         {
             "trigger": "advance",
             "source": "uginfo",
+            "dest": "ug",
+            "conditions": "is_going_to_ug",
+        },
+        {
+            "trigger": "advance",
+            "source": "uginfo",
             "dest": "uginfo_ig",
             "conditions": "is_going_to_uginfo_ig",
         },

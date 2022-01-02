@@ -5,7 +5,7 @@ from utils import send_text_message, send_button_message, send_image_carousel, s
 STARPLAYER=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
 UG_NAME=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
 ug_ig=['https://www.instagram.com/__seul777','https://www.instagram.com/han.yang830','https://www.instagram.com/feichi1124','https://www.instagram.com/djeminatw','https://www.instagram.com/yukiii_min','https://www.instagram.com/nini.lin_022','https://www.instagram.com/___yovia___','https://instagram.com/mia_712','https://www.instagram.com/joy_lee.91','https://www.instagram.com/yimanping']
-ug_img=['https://i.imgur.com/HiVBWVk.png','https://i.imgur.com/iGay1EV.png','https://i.imgur.com/tr0nN7V.png','https://i.imgur.com/XQtzNrv.png','https://i.imgur.com/uErRmvT.png','https://i.imgur.com/dzLk4Ij.png','https://i.imgur.com/UJgxW2y.png','https://i.imgur.com/BppKt0L.png','https://i.imgur.com/EfOfyyt.jpg','https://i.imgur.com/srr6LEp.png']
+ug_img=['https://i.imgur.com/YXrO0ZW.png','https://i.imgur.com/GwaiUUh.png','https://i.imgur.com/tr0nN7V.png','https://i.imgur.com/USHt6zb.png','https://i.imgur.com/uErRmvT.png','https://i.imgur.com/wpcqheO.png','https://i.imgur.com/UJgxW2y.png','https://i.imgur.com/BppKt0L.png','https://i.imgur.com/EfOfyyt.jpg','https://i.imgur.com/0F8DMNl.png']
 ug_data=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
 Player_img={"林安可":"https://i.imgur.com/Lxf4h5q.png","蘇智傑":"https://i.imgur.com/u5t2HSq.png","陳傑憲":"https://i.imgur.com/QYPWtnm.png","林靖凱":"https://i.imgur.com/HaPr7f7.png","林岱安":"https://i.imgur.com/ErNTsIu.jpg","胡智為":"https://i.imgur.com/JmKFXB4.png","陳韻文":"https://i.imgur.com/pe63Sc1.png","古林睿煬":"https://i.imgur.com/fP0NVC4.png"}
 Player_pic=['https://i.imgur.com/p9f43YQ.png','https://i.imgur.com/Z93xq2s.png','https://i.imgur.com/p1Txo3R.png','https://i.imgur.com/RyVGii0.png','https://i.imgur.com/PFOPip5.png','https://i.imgur.com/ME2rd9v.png','https://i.imgur.com/KCHEFVA.png','https://i.imgur.com/PdsKGPy.png']
@@ -31,7 +31,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_ug(self, event):
         text = event.message.text
-        if text == "啦啦隊介紹"  or text == "上一頁":
+        if text == "啦啦隊介紹" or text == "上一頁":
             return True
 
     def is_going_to_teaminfo(self, event):
