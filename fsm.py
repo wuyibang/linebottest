@@ -22,7 +22,8 @@ class TocMachine(GraphMachine):
 
     def is_going_to_teamlions(self, event):
         text = event.message.text
-        return text == "球隊介紹"
+        if text == "球隊介紹" or text == "上一頁":
+            return True
 
     def is_going_to_asplayer(self, event):
         text = event.message.text
@@ -95,16 +96,28 @@ class TocMachine(GraphMachine):
         print("IN TEAMINFO")
         reply_token = event.reply_token
         text = event.message.text
+        title=""
+        url = ""
+        uptext=""
         if text == "FB":
+            title = "官方FB"
+            uptext = "球團資訊、照片、活動...等"
             url='https://www.facebook.com/unilions'
         elif text == "IG":
+            title = "官方IG"
+            uptext = "球團資訊、照片、活動...等"
             url = 'https://www.instagram.com/unilions_official/'
         elif text == "YOUTUBE":
+            title = "官方YOUTUBE"
+            uptext = "紀錄影片、活動影片"
             url = 'https://www.youtube.com/user/unilionsteam'
         elif text == "LIONCREW":
+            title = "官方商城"
+            uptext = "球衣、T-shirt、帽子相關紀念商品"
             url = 'https://lioncrew.uni-lions.com.tw/'
-        send_text_message(reply_token,url)
-        self.go_back()
+        lables = ["上一頁"]
+        texts = ["上一頁"]
+        send_button_message2(reply_token,title,url,uptext,labels,texts)
     
     def on_enter_asplayer(self, event):
         print("Show hottest player")
