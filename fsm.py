@@ -4,7 +4,9 @@ from utils import send_text_message, send_button_message, send_image_carousel, s
 #from webcrawler import searchplayer
 STARPLAYER=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
 UG_NAME=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
-ug_img=[]
+ug_ig=['https://www.instagram.com/__seul777','https://www.instagram.com/han.yang830','https://www.instagram.com/feichi1124','https://www.instagram.com/djeminatw','https://www.instagram.com/yukiii_min','https://www.instagram.com/nini.lin_022','https://www.instagram.com/___yovia___','https://instagram.com/mia_712','https://www.instagram.com/joy_lee.91','https://www.instagram.com/yimanping']
+ug_img=['https://i.imgur.com/HiVBWVk.png','https://i.imgur.com/iGay1EV.png','https://i.imgur.com/tr0nN7V.png','https://i.imgur.com/XQtzNrv.png','https://i.imgur.com/uErRmvT.png','https://i.imgur.com/dzLk4Ij.png','https://i.imgur.com/UJgxW2y.png','https://i.imgur.com/BppKt0L.png','https://i.imgur.com/EfOfyyt.jpg','https://i.imgur.com/srr6LEp.png']
+ug_data=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
 Player_img={"林安可":"https://i.imgur.com/Lxf4h5q.png","蘇智傑":"https://i.imgur.com/u5t2HSq.png","陳傑憲":"https://i.imgur.com/QYPWtnm.png","林靖凱":"https://i.imgur.com/HaPr7f7.png","林岱安":"https://i.imgur.com/ErNTsIu.jpg","胡智為":"https://i.imgur.com/JmKFXB4.png","陳韻文":"https://i.imgur.com/pe63Sc1.png","古林睿煬":"https://i.imgur.com/fP0NVC4.png"}
 Player_pic=['https://i.imgur.com/p9f43YQ.png','https://i.imgur.com/Z93xq2s.png','https://i.imgur.com/p1Txo3R.png','https://i.imgur.com/RyVGii0.png','https://i.imgur.com/PFOPip5.png','https://i.imgur.com/ME2rd9v.png','https://i.imgur.com/KCHEFVA.png','https://i.imgur.com/PdsKGPy.png']
 Player_media=['https://www.facebook.com/ankolin1997','https://www.instagram.com/ccsu.32/','https://www.instagram.com/hsien_1994','https://www.instagram.com/c.k.lin_64_/','https://www.instagram.com/lin_dai.an168/','https://www.facebook.com/profile.php?id=100044237085864','https://www.instagram.com/lions_cyw12/','https://www.instagram.com/612_lao/']
@@ -29,7 +31,8 @@ class TocMachine(GraphMachine):
 
     def is_going_to_ug(self, event):
         text = event.message.text
-        return text == "啦啦隊介紹"
+        if text == "啦啦隊介紹"  or text == "上一頁":
+            return True
 
     def is_going_to_teaminfo(self, event):
         text = event.message.text
@@ -50,6 +53,17 @@ class TocMachine(GraphMachine):
     def is_going_to_playerinfo_stat(self, event):
         text = event.message.text
         return "stat" in text
+
+    def is_going_to_uginfo(self, event):
+        text = event.message.text
+        if text in UG_NAME:
+            return True
+        if "查詢" in text:
+            return True
+
+    def is_going_to_uginfo_ig(self, event):
+        text = event.message.text
+        return "IG" in text
 
     # def is_going_to_ShowPlayerTable(self, event):
     #     print("in state show player table")
@@ -168,6 +182,50 @@ class TocMachine(GraphMachine):
         labels=["查詢"+STARPLAYER[num]]
         texts = ["查詢"+STARPLAYER[num]]
         send_button_message2(reply_token,title,st,labels,texts)
+
+    def on_enter_ug(self, event):
+        print("UG")
+        reply_token = event.reply_token
+        imglinks=['https://i.imgur.com/0GISK3d.png','https://i.imgur.com/Q6PQOVb.png','https://i.imgur.com/vB4yT4h.png','https://i.imgur.com/2SOFjLN.png','https://i.imgur.com/qn7GMGz.png','https://i.imgur.com/ak03PLt.png','https://i.imgur.com/Q9rFfBi.png','https://i.imgur.com/ojTkGye.png','https://i.imgur.com/Mtt5HMT.png','https://i.imgur.com/qCLZWBM.png']
+        labels=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
+        texts=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
+        send_image_carousel(reply_token, imglinks, labels, texts)
+
+
+    def on_enter_uginfo(self, event):
+        print("IN UGINFO")
+        reply_token = event.reply_token
+        name = event.message.text
+        num = 0
+        for i in range(len(UG_NAME)):
+            if UG_NAME[i] in name:
+                num = i
+                break
+        now = num
+        img_url = ug_img[num]
+        title = UG_NAME[num]
+        uptext = ug_data[num]  #ug 簡介
+        labels = [ UG_NAME[num]+"IG","上一頁"]
+        texts = [ UG_NAME[num]+"IG", "上一頁"]
+        send_button_message(reply_token,img_url,title,uptext,labels,texts)
+
+    def on_enter_playerinfo_uginfo_ug(self, event):
+        print("Show player media")
+        reply_token = event.reply_token
+        name = event.message.text
+        num = 0
+        for i in range(len(UG_NAME)):
+            if UG_NAME[i] in name:
+                num = i
+                break
+        print(num)
+        img_url = ug_img[num]
+        url = ug_ig[num]
+        title = UG_NAME[num]+" 社群"
+        uptext="IG帳號"
+        labels=["查詢"+UG_NAME[num]]
+        texts = ["查詢"+UG_NAME[num]]
+        send_button_message2(reply_token,url,uptext,labels,texts)
         #self.go_back()
     # def on_exit_playerinfo_media(self):
     #     print("Leaving media")
