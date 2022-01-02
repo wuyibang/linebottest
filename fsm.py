@@ -99,8 +99,8 @@ class TocMachine(GraphMachine):
         img_url='https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.30808-6/259066224_4492131164157391_3684369435147091953_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=e3f864&_nc_ohc=tlWXzkafONwAX98gsWn&_nc_ht=scontent.ftpe7-2.fna&oh=00_AT_SX68k6GsnS6Cgo2KV7lPahn1hzQL5Ws1buX1jfsHHoA&oe=61D5AE7E'
         title = "統一獅_球隊介紹"
         uptext = "查看球隊社群及官方商城"
-        labels = ["IG","FB","YOUTUBE","LIONCREW","MENU"]
-        texts = ["IG","FB","YOUTUBE","LIONCREW","MENU"]
+        labels = ["IG","FB","YOUTUBE","LIONCREW"]
+        texts = ["IG","FB","YOUTUBE","LIONCREW"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
 
     def on_enter_teaminfo(self, event):
