@@ -24,6 +24,24 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
+            "source": "asplayer",
+            "dest": "menu",
+            "conditions": "is_going_to_menu",
+        },
+        {
+            "trigger": "advance",
+            "source": "teamlions",
+            "dest": "menu",
+            "conditions": "is_going_to_menu",
+        },
+        {
+            "trigger": "advance",
+            "source": "ug",
+            "dest": "menu",
+            "conditions": "is_going_to_menu",
+        },
+        {
+            "trigger": "advance",
             "source": "menu",
             "dest": "teamlions",
             "conditions": "is_going_to_teamlions",
