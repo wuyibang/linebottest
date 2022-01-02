@@ -60,7 +60,7 @@
 2.url、pic:許多連結或圖片讓聊天機器人更生動
 3.image_carousel:可向右滑動的圖片及文字，可以查看場上帥氣的球星及可愛的啦啦隊
 4.reply multi message:像是秀球員社群連結及button在同時間，利用reply_message函式中的第二個參數改成array來達到目標
-
+5.can be apply by multiple users:一個userid會去對應到一個machine
 ## 程式部署
 丟在heroku上執行
     
