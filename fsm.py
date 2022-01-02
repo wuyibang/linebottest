@@ -115,7 +115,7 @@ class TocMachine(GraphMachine):
             title = "官方商城"
             uptext = "球衣、T-shirt、帽子相關紀念商品"
             url = 'https://lioncrew.uni-lions.com.tw/'
-        lables = ["上一頁"]
+        labels = ["上一頁"]
         texts = ["上一頁"]
         send_button_message2(reply_token,title,url,uptext,labels,texts)
     
