@@ -12,11 +12,11 @@ Player_pic=['https://i.imgur.com/p9f43YQ.png','https://i.imgur.com/Z93xq2s.png',
 Player_media=['https://www.facebook.com/ankolin1997','https://www.instagram.com/ccsu.32/','https://www.instagram.com/hsien_1994','https://www.instagram.com/c.k.lin_64_/','https://www.instagram.com/lin_dai.an168/','https://www.facebook.com/profile.php?id=100044237085864','https://www.instagram.com/lions_cyw12/','https://www.instagram.com/612_lao/']
 player_data=["NO.77 RF 左投左打","NO.32 LF 右投左打","NO.24 CF 右投左打","NO.64 2B 右投右打","NO.31 C 右投右打","NO.58 SP 右投","NO.12 CP 右投","NO.19 SP 右投"]
 player_song=['https://www.youtube.com/watch?v=SlBlVaLMxxA','https://www.youtube.com/watch?v=PmeCbnpP2fA','https://youtu.be/6aQvoOy9UUA?t=150','https://youtu.be/_bZXneI-F5A?t=890','https://www.youtube.com/watch?v=YyKLff5N-0U','https://www.youtube.com/watch?v=FlictnqNEoc',"投手沒有應援曲","投手沒有應援曲"]
-player_song_lycris=["Vamos Lions\nHero Ito\nVamos Ito\nPower hito",
-"直球 對決\n球要給誰 球給智傑\n打安打安打 球給智傑\n轟智傑智傑 直球對決",
-"他的名字 陳傑憲\n今晚打擊 沒有極限\n他的名字 陳傑憲\n火力全開 沒有極限",
-"一壘二壘三壘打\n火力全開林靖凱\n一壘二壘三壘跑\n跑回本壘林靖凱",
-"ciru ciru go go\nhulas hulas go go\n lion lion go go\n林岱安 let's go",
+player_song_lycris=["Vamos Lions Hero Ito\nVamos Ito Power hito",
+"直球 對決 球要給誰 球給智傑\n打安打安打 球給智傑\n轟智傑智傑 直球對決",
+"他的名字 陳傑憲 今晚打擊 沒有極限\n他的名字 陳傑憲 火力全開 沒有極限",
+"一壘二壘三壘打 火力全開林靖凱\n一壘二壘三壘跑 跑回本壘林靖凱",
+"ciru*2 go go hulas*2 go go\n lion*2 go go\n林岱安 let's go",
 "Hu's coming~ *3",
 "球員沒有應援曲","球員沒有應援曲"]
 class TocMachine(GraphMachine):
@@ -151,8 +151,8 @@ class TocMachine(GraphMachine):
         img_url = Player_pic[num]
         title = STARPLAYER[num]
         uptext = player_data[num]
-        labels = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁",STARPLAYER[num]+"應援曲"]
-        texts = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁",STARPLAYER[num]+"應援曲"]
+        labels = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat",STARPLAYER[num]+"應援曲","上一頁"]
+        texts = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat",STARPLAYER[num]+"應援曲","上一頁"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
 
     def on_enter_player_song(self, event):
