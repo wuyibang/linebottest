@@ -66,6 +66,18 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
+            "source": "playerinfo_stat",
+            "dest": "playerinfo",
+            "conditions": "is_going_to_playerinfo",
+        },
+        {
+            "trigger": "advance",
+            "source": "playerinfo_media",
+            "dest": "playerinfo",
+            "conditions": "is_going_to_playerinfo",
+        },
+        {
+            "trigger": "advance",
             "source": "playerinfo",
             "dest": "asplayer",
             "conditions": "is_going_to_asplayer",
