@@ -78,6 +78,9 @@ def send_button_message2(reply_token, title, uptext, labels, texts):
             actions=acts
         )
     )
+    replyarr=[]
+    replyarr.append(message)
+    replyarr.append(TextSendMessage(text=title))
     line_bot_api.reply_message(reply_token, message)
     return "OK"
 
