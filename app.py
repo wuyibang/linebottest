@@ -151,6 +151,7 @@ def create_machine():
         auto_transitions=False,
         show_conditions=True,
     )
+    return machine
 
 app = Flask(__name__, static_url_path="")
 
