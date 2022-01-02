@@ -109,7 +109,7 @@ class TocMachine(GraphMachine):
                 break
         now = num
         img_url = Player_pic[num]
-        title = name
+        title = STARPLAYER[num]
         uptext = player_data[num]
         labels = [name+"社群",name+"stat","上一頁"]
         texts = [name+"社群",name+"stat","上一頁"]
@@ -127,11 +127,11 @@ class TocMachine(GraphMachine):
         print(num)
         img_url = Player_pic[num]
         url = Player_media[num]
-        title = name+" 社群"
+        title = STARPLAYER[num]+" 社群"
         uptext="社群媒體"
         labels=["查詢其他球員"]
         texts = ["查詢其他球員"]
-        send_button_message(reply_token,img_url,url,uptext,labels,texts)
+        send_button_message2(reply_token,url,uptext,labels,texts)
         #self.go_back()
 
     def on_enter_playerinfo_stat(self, event):
@@ -162,10 +162,10 @@ class TocMachine(GraphMachine):
             st = "G:52\nSV:32 ERA:1.46\nK/BB:3.07 WHIP:1.07"
         elif now == 7:
             st = "IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25K"
-        title=name+"2021數據"
+        title=STARPLAYER[now]+"2021數據"
         labels=["查詢其他球員"]
         texts = ["查詢其他球員"]
-        send_button_message(reply_token,img_url,title,st,labels,texts)
+        send_button_message2(reply_token,title,st,labels,texts)
         #self.go_back()
     # def on_exit_playerinfo_media(self):
     #     print("Leaving media")
