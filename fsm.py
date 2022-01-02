@@ -38,7 +38,8 @@ class TocMachine(GraphMachine):
         text = event.message.text
         if text in STARPLAYER:
             return True
-        if text == "查詢其他球員"
+        if text == "查詢其他球員":
+            return True
 
     def is_going_to_playerinfo_media(self, event):
         text = event.message.text
