@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "menu","teamlions","asplayer","ug","teaminfo","playerinfo","playerinfo_media","playerinfo_stat","playersong","uginfo","uginfo_ig"],
+    states=["user", "menu","teamlions","asplayer","ug","teaminfo","playerinfo","playerinfo_media","playerinfo_stat","playersong","uginfo","uginfo_ig","player_song"],
     transitions=[
         {
             "trigger": "advance",
@@ -111,6 +111,18 @@ machine = TocMachine(
             "source": "playerinfo",
             "dest": "playerinfo_stat",
             "conditions": "is_going_to_playerinfo_stat",
+        },
+        {
+            "trigger": "advance",
+            "source": "playerinfo",
+            "dest": "player_song",
+            "conditions": "is_going_to_player_song",
+        },
+        {
+            "trigger": "advance",
+            "source": "player_song",
+            "dest": "playerinfo",
+            "conditions": "is_going_to_playerinfo",
         },
         {
             "trigger": "advance",

@@ -11,7 +11,14 @@ Player_img={"林安可":"https://i.imgur.com/Lxf4h5q.png","蘇智傑":"https://i
 Player_pic=['https://i.imgur.com/p9f43YQ.png','https://i.imgur.com/Z93xq2s.png','https://i.imgur.com/p1Txo3R.png','https://i.imgur.com/RyVGii0.png','https://i.imgur.com/PFOPip5.png','https://i.imgur.com/ME2rd9v.png','https://i.imgur.com/KCHEFVA.png','https://i.imgur.com/PdsKGPy.png']
 Player_media=['https://www.facebook.com/ankolin1997','https://www.instagram.com/ccsu.32/','https://www.instagram.com/hsien_1994','https://www.instagram.com/c.k.lin_64_/','https://www.instagram.com/lin_dai.an168/','https://www.facebook.com/profile.php?id=100044237085864','https://www.instagram.com/lions_cyw12/','https://www.instagram.com/612_lao/']
 player_data=["NO.77 RF 左投左打","NO.32 LF 右投左打","NO.24 CF 右投左打","NO.64 2B 右投右打","NO.31 C 右投右打","NO.58 SP 右投","NO.12 CP 右投","NO.19 SP 右投"]
-
+player_song=['https://www.youtube.com/watch?v=SlBlVaLMxxA','https://www.youtube.com/watch?v=PmeCbnpP2fA','https://youtu.be/6aQvoOy9UUA?t=150','https://youtu.be/_bZXneI-F5A?t=890','https://www.youtube.com/watch?v=YyKLff5N-0U','https://www.youtube.com/watch?v=FlictnqNEoc',"投手沒有應援曲","投手沒有應援曲"]
+player_song_lycris=["Vamos Lions\nHero Ito\nVamos Ito\nPower hito",
+"直球 對決\n球要給誰 球給智傑\n打安打安打 球給智傑\n轟智傑智傑 直球對決",
+"他的名字 陳傑憲\n今晚打擊 沒有極限\n他的名字 陳傑憲\n火力全開 沒有極限",
+"一壘二壘三壘打\n火力全開林靖凱\n一壘二壘三壘跑\n跑回本壘林靖凱",
+"ciru ciru go go\nhulas hulas go go\n lion lion go go\n林岱安 let's go",
+"Hu's coming~ *3",
+"球員沒有應援曲","球員沒有應援曲"]
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
@@ -54,6 +61,10 @@ class TocMachine(GraphMachine):
     def is_going_to_playerinfo_stat(self, event):
         text = event.message.text
         return "stat" in text
+
+    def is_going_to_player_song(self, event):
+        text = event.message.text
+        return "應援曲" in text
 
     def is_going_to_uginfo(self, event):
         text = event.message.text
@@ -143,6 +154,24 @@ class TocMachine(GraphMachine):
         labels = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁"]
         texts = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
+
+    def on_enter_player_song(self, event):
+        print("Show player song")
+        reply_token = event.reply_token
+        name = event.message.text
+        num = 0
+        for i in range(len(STARPLAYER)):
+            if STARPLAYER[i] in name:
+                num = i
+                break
+        print(num)
+        img_url = Player_pic[num]
+        url = player_song[num]
+        title = STARPLAYER[num]+" 應援曲"
+        uptext=player_song_lycris[num]    #球員應援詞
+        labels=["查詢"+STARPLAYER[num]]
+        texts = ["查詢"+STARPLAYER[num]]
+        send_button_message2(reply_token,title,url,uptext,labels,texts)
 
     def on_enter_playerinfo_media(self, event):
         print("Show player media")
