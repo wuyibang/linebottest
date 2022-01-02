@@ -59,7 +59,7 @@ def send_button_message(reply_token, img, title, uptext, labels, texts):
     line_bot_api.reply_message(reply_token, message)
     return "OK"
 
-def send_button_message2(reply_token, title, uptext, labels, texts):
+def send_button_message2(reply_token, title,url, uptext, labels, texts):
     line_bot_api = LineBotApi(channel_access_token)
     acts = []
     for i, lab in enumerate(labels):
@@ -80,7 +80,7 @@ def send_button_message2(reply_token, title, uptext, labels, texts):
     )
     replyarr=[]
     replyarr.append(message)
-    replyarr.append(TextSendMessage(text=title))
+    replyarr.append(TextSendMessage(text=url))
     line_bot_api.reply_message(reply_token, replyarr)
     return "OK"
 

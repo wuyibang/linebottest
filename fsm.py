@@ -147,7 +147,7 @@ class TocMachine(GraphMachine):
         uptext="社群媒體"
         labels=["查詢"+STARPLAYER[num]]
         texts = ["查詢"+STARPLAYER[num]]
-        send_button_message2(reply_token,url,uptext,labels,texts)
+        send_button_message2(reply_token,title,url,uptext,labels,texts)
         #self.go_back()
 
     def on_enter_playerinfo_stat(self, event):
@@ -219,12 +219,12 @@ class TocMachine(GraphMachine):
                 num = i
                 break
         print(num)
-        img_url = ug_img[num]
+        url = ug_ig[num]
         title = UG_NAME[num]+"IG"
         uptext="IG帳號"
         labels=["查詢"+UG_NAME[num]]
         texts = ["查詢"+UG_NAME[num]]
-        send_button_message2(reply_token,title,uptext,labels,texts)
+        send_button_message2(reply_token,title,url,uptext,labels,texts)
         #self.go_back()
     # def on_exit_playerinfo_media(self):
     #     print("Leaving media")
