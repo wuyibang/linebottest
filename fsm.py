@@ -190,7 +190,7 @@ class TocMachine(GraphMachine):
         elif now == 6:
             st = "G:52\nSV:32 ERA:1.46\nK/BB:3.07 WHIP:1.07"
         elif now == 7:
-            st = "IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25K"
+            st = "IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25K "
         title=STARPLAYER[num]+"2021數據"
         labels=["查詢"+STARPLAYER[num]]
         texts = ["查詢"+STARPLAYER[num]]
