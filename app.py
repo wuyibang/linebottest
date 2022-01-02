@@ -12,144 +12,145 @@ from utils import send_text_message
 
 load_dotenv()
 
-
-machine = TocMachine(
-    states=["user", "menu","teamlions","asplayer","ug","teaminfo","playerinfo","playerinfo_media","playerinfo_stat","playersong","uginfo","uginfo_ig","player_song"],
-    transitions=[
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "menu",
-            "conditions": "is_going_to_menu",
-        },
-        {
-            "trigger": "advance",
-            "source": "asplayer",
-            "dest": "menu",
-            "conditions": "is_going_to_menu",
-        },
-        {
-            "trigger": "advance",
-            "source": "teamlions",
-            "dest": "menu",
-            "conditions": "is_going_to_menu",
-        },
-        {
-            "trigger": "advance",
-            "source": "ug",
-            "dest": "menu",
-            "conditions": "is_going_to_menu",
-        },
-        {
-            "trigger": "advance",
-            "source": "menu",
-            "dest": "teamlions",
-            "conditions": "is_going_to_teamlions",
-        },
-        {
-            "trigger": "advance",
-            "source": "menu",
-            "dest": "asplayer",
-            "conditions": "is_going_to_asplayer",
-        },
-        {
-            "trigger": "advance",
-            "source": "menu",
-            "dest": "ug",
-            "conditions": "is_going_to_ug",
-        },
-        {
-            "trigger": "advance",
-            "source": "ug",
-            "dest": "uginfo",
-            "conditions": "is_going_to_uginfo",
-        },
-        {
-            "trigger": "advance",
-            "source": "uginfo",
-            "dest": "ug",
-            "conditions": "is_going_to_ug",
-        },
-        {
-            "trigger": "advance",
-            "source": "uginfo",
-            "dest": "uginfo_ig",
-            "conditions": "is_going_to_uginfo_ig",
-        },
-        {
-            "trigger": "advance",
-            "source": "uginfo_ig",
-            "dest": "uginfo",
-            "conditions": "is_going_to_uginfo",
-        },
-        {
-            "trigger": "advance",
-            "source": "teamlions",
-            "dest": "teaminfo",
-            "conditions": "is_going_to_teaminfo",
-        },
-        {
-            "trigger": "advance",
-            "source": "teaminfo",
-            "dest": "teamlions",
-            "conditions": "is_going_to_teamlions",
-        },
-        {
-            "trigger": "advance",
-            "source": "asplayer",
-            "dest": "playerinfo",
-            "conditions": "is_going_to_playerinfo",
-        },
-        {
-            "trigger": "advance",
-            "source": "playerinfo",
-            "dest": "playerinfo_media",
-            "conditions": "is_going_to_playerinfo_media",
-        },
-        {
-            "trigger": "advance",
-            "source": "playerinfo",
-            "dest": "playerinfo_stat",
-            "conditions": "is_going_to_playerinfo_stat",
-        },
-        {
-            "trigger": "advance",
-            "source": "playerinfo",
-            "dest": "player_song",
-            "conditions": "is_going_to_player_song",
-        },
-        {
-            "trigger": "advance",
-            "source": "player_song",
-            "dest": "playerinfo",
-            "conditions": "is_going_to_playerinfo",
-        },
-        {
-            "trigger": "advance",
-            "source": "playerinfo_stat",
-            "dest": "playerinfo",
-            "conditions": "is_going_to_playerinfo",
-        },
-        {
-            "trigger": "advance",
-            "source": "playerinfo_media",
-            "dest": "playerinfo",
-            "conditions": "is_going_to_playerinfo",
-        },
-        {
-            "trigger": "advance",
-            "source": "playerinfo",
-            "dest": "asplayer",
-            "conditions": "is_going_to_asplayer",
-        },
-        {"trigger": "go_back", "source":"teaminfo", "dest": "teamlions"},
-        {"trigger": "go_back", "source":"playerinfo_media", "dest": "playerinfo"},
-        {"trigger": "go_back", "source":"playerinfo_stat", "dest": "playerinfo"},
-    ],
-    initial="user",
-    auto_transitions=False,
-    show_conditions=True,
-)
+machines={}
+def create_machine():
+    machine = TocMachine(
+        states=["user", "menu","teamlions","asplayer","ug","teaminfo","playerinfo","playerinfo_media","playerinfo_stat","playersong","uginfo","uginfo_ig","player_song"],
+        transitions=[
+            {
+                "trigger": "advance",
+                "source": "user",
+                "dest": "menu",
+                "conditions": "is_going_to_menu",
+            },
+            {
+                "trigger": "advance",
+                "source": "asplayer",
+                "dest": "menu",
+                "conditions": "is_going_to_menu",
+            },
+            {
+                "trigger": "advance",
+                "source": "teamlions",
+                "dest": "menu",
+                "conditions": "is_going_to_menu",
+            },
+            {
+                "trigger": "advance",
+                "source": "ug",
+                "dest": "menu",
+                "conditions": "is_going_to_menu",
+            },
+            {
+                "trigger": "advance",
+                "source": "menu",
+                "dest": "teamlions",
+                "conditions": "is_going_to_teamlions",
+            },
+            {
+                "trigger": "advance",
+                "source": "menu",
+                "dest": "asplayer",
+                "conditions": "is_going_to_asplayer",
+            },
+            {
+                "trigger": "advance",
+                "source": "menu",
+                "dest": "ug",
+                "conditions": "is_going_to_ug",
+            },
+            {
+                "trigger": "advance",
+                "source": "ug",
+                "dest": "uginfo",
+                "conditions": "is_going_to_uginfo",
+            },
+            {
+                "trigger": "advance",
+                "source": "uginfo",
+                "dest": "ug",
+                "conditions": "is_going_to_ug",
+            },
+            {
+                "trigger": "advance",
+                "source": "uginfo",
+                "dest": "uginfo_ig",
+                "conditions": "is_going_to_uginfo_ig",
+            },
+            {
+                "trigger": "advance",
+                "source": "uginfo_ig",
+                "dest": "uginfo",
+                "conditions": "is_going_to_uginfo",
+            },
+            {
+                "trigger": "advance",
+                "source": "teamlions",
+                "dest": "teaminfo",
+                "conditions": "is_going_to_teaminfo",
+            },
+            {
+                "trigger": "advance",
+                "source": "teaminfo",
+                "dest": "teamlions",
+                "conditions": "is_going_to_teamlions",
+            },
+            {
+                "trigger": "advance",
+                "source": "asplayer",
+                "dest": "playerinfo",
+                "conditions": "is_going_to_playerinfo",
+            },
+            {
+                "trigger": "advance",
+                "source": "playerinfo",
+                "dest": "playerinfo_media",
+                "conditions": "is_going_to_playerinfo_media",
+            },
+            {
+                "trigger": "advance",
+                "source": "playerinfo",
+                "dest": "playerinfo_stat",
+                "conditions": "is_going_to_playerinfo_stat",
+            },
+            {
+                "trigger": "advance",
+                "source": "playerinfo",
+                "dest": "player_song",
+                "conditions": "is_going_to_player_song",
+            },
+            {
+                "trigger": "advance",
+                "source": "player_song",
+                "dest": "playerinfo",
+                "conditions": "is_going_to_playerinfo",
+            },
+            {
+                "trigger": "advance",
+                "source": "playerinfo_stat",
+                "dest": "playerinfo",
+                "conditions": "is_going_to_playerinfo",
+            },
+            {
+                "trigger": "advance",
+                "source": "playerinfo_media",
+                "dest": "playerinfo",
+                "conditions": "is_going_to_playerinfo",
+            },
+            {
+                "trigger": "advance",
+                "source": "playerinfo",
+                "dest": "asplayer",
+                "conditions": "is_going_to_asplayer",
+            },
+            {"trigger": "go_back", "source":"teaminfo", "dest": "teamlions"},
+            {"trigger": "go_back", "source":"playerinfo_media", "dest": "playerinfo"},
+            {"trigger": "go_back", "source":"playerinfo_stat", "dest": "playerinfo"},
+        ],
+        initial="user",
+        auto_transitions=False,
+        show_conditions=True,
+    )
 
 app = Flask(__name__, static_url_path="")
 
@@ -190,6 +191,9 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
+        
+        if response == False:
+            send_text_message(event.reply_token, "Invalid command, try again")
         print(f"\nFSM STATE: {machine.state}")
 
         line_bot_api.reply_message(
@@ -220,8 +224,13 @@ def webhook_handler():
             continue
         if not isinstance(event.message.text, str):
             continue
+        if event.source.user_id not in machines:
+            machines[event.source.user_id] = create_machine()
+
+        # Advance the FSM for each MessageEvent
+        response = machines[event.source.user_id].advance(event)
         print(f"REQUEST BODY: \n{body}")
-        response = machine.advance(event)
+        #response = machine.advance(event)
         print(f"\nFSM STATE: {machine.state}")
         if response == False:
             send_text_message(event.reply_token, "Not Entering any State")
