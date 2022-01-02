@@ -186,7 +186,7 @@ class TocMachine(GraphMachine):
     def on_enter_ug(self, event):
         print("UG")
         reply_token = event.reply_token
-        imglinks=['https://i.imgur.com/0GISK3d.png','https://i.imgur.com/Q6PQOVb.png','https://i.imgur.com/vB4yT4h.png','https://i.imgur.com/2SOFjLN.png','https://i.imgur.com/qn7GMGz.png','https://i.imgur.com/ak03PLt.png','https://i.imgur.com/Q9rFfBi.png','https://i.imgur.com/ojTkGye.png','https://i.imgur.com/Mtt5HMT.png','https://i.imgur.com/qCLZWBM.png']
+        imglinks=['https://i.imgur.com/0GISK3d.png','https://i.imgur.com/Q6PQOVb.png','https://i.imgur.com/vB4yT4h.png','https://i.imgur.com/2SOFjLN.png','https://i.imgur.com/JFisyKy.png','https://i.imgur.com/ak03PLt.png','https://i.imgur.com/Q9rFfBi.png','https://i.imgur.com/ojTkGye.png','https://i.imgur.com/Mtt5HMT.png','https://i.imgur.com/qCLZWBM.png']
         labels=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
         texts=["瑟七","芮絲","faye","mina","yuki","妮妮","yovia","mia","joy","曼萍"]
         send_image_carousel(reply_token, imglinks, labels, texts)
@@ -209,7 +209,7 @@ class TocMachine(GraphMachine):
         texts = [ UG_NAME[num]+"IG", "上一頁"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
 
-    def on_enter_playerinfo_uginfo_ig(self, event):
+    def on_enter_uginfo_ig(self, event):
         print("Show player media")
         reply_token = event.reply_token
         name = event.message.text
