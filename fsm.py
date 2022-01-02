@@ -181,7 +181,7 @@ class TocMachine(GraphMachine):
         title=STARPLAYER[num]+"2021數據"
         labels=["查詢"+STARPLAYER[num]]
         texts = ["查詢"+STARPLAYER[num]]
-        send_button_message2(reply_token,title,st,labels,texts)
+        send_button_message3(reply_token,title,st,labels,texts)
 
     def on_enter_ug(self, event):
         print("UG")
