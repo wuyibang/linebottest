@@ -124,10 +124,11 @@ class TocMachine(GraphMachine):
             if STARPLAYER[i] in name:
                 num = i
                 break
+        print(num)
         img_url = Player_pic[num]
         url = Player_media[num]
         title = name+" 社群"
-        uptext=""
+        uptext="社群媒體"
         labels=["查詢其他球員"]
         texts = ["查詢其他球員"]
         send_button_message(reply_token,img_url,url,uptext,labels,texts)
