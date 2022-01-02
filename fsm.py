@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, send_button_message, send_image_carousel
+from utils import send_text_message, send_button_message, send_image_carouselㄝsend_button_message2
 #from webcrawler import searchplayer
 STARPLAYER=["林安可","蘇智傑","陳傑憲","林靖凱","林岱安","胡智為","陳韻文","古林睿煬"]
 Player_img={"林安可":"https://i.imgur.com/Lxf4h5q.png","蘇智傑":"https://i.imgur.com/u5t2HSq.png","陳傑憲":"https://i.imgur.com/QYPWtnm.png","林靖凱":"https://i.imgur.com/HaPr7f7.png","林岱安":"https://i.imgur.com/ErNTsIu.jpg","胡智為":"https://i.imgur.com/JmKFXB4.png","陳韻文":"https://i.imgur.com/pe63Sc1.png","古林睿煬":"https://i.imgur.com/fP0NVC4.png"}
@@ -38,6 +38,7 @@ class TocMachine(GraphMachine):
         text = event.message.text
         if text in STARPLAYER:
             return True
+        if text == "查詢其他球員"
 
     def is_going_to_playerinfo_media(self, event):
         text = event.message.text
@@ -123,7 +124,11 @@ class TocMachine(GraphMachine):
                 num = i
                 break
         url = Player_media[num]
-        send_text_message(reply_token,url)
+        title = name+" 社群"
+        uptext=""
+        labels=["查詢其他球員"]
+        texts = ["查詢其他球員"]
+        send_button_message2(reply_token,title,uptext,labels.texts)
         #self.go_back()
 
     def on_enter_playerinfo_stat(self, event):
@@ -153,7 +158,10 @@ class TocMachine(GraphMachine):
             st = "G:52\nSV:32 ERA:1.46\nK/BB:3.07 WHIP:1.07\n2021 救援王\n2021 達成生涯100SV"
         elif now == 7:
             st = "IP:100\nW:8 K/9:9.54\nERA:3.15 WHIP:1.25\n2021 單季破百局百K"
-        send_text_message(reply_token,st)
+        title=name+"2021數據"
+        labels=["查詢其他球員"]
+        texts = ["查詢其他球員"]
+        send_button_message2(reply_token,title,st,labels,texts)
         #self.go_back()
     # def on_exit_playerinfo_media(self):
     #     print("Leaving media")

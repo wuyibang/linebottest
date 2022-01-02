@@ -58,6 +58,29 @@ def send_button_message(reply_token, img, title, uptext, labels, texts):
     )
     line_bot_api.reply_message(reply_token, message)
     return "OK"
+
+def send_button_message2(reply_token, title, uptext, labels, texts):
+    line_bot_api = LineBotApi(channel_access_token)
+    acts = []
+    for i, lab in enumerate(labels):
+        acts.append(
+            MessageTemplateAction(
+                label=lab,
+                text=texts[i]
+            )
+        )
+
+    message = TemplateSendMessage(
+        alt_text='Buttons template',
+        template=ButtonsTemplate(
+            title=title,
+            text=uptext,
+            actions=acts
+        )
+    )
+    line_bot_api.reply_message(reply_token, message)
+    return "OK"
+
 def send_image_carousel(reply_token, imglinks, labels, texts):
     line_bot_api = LineBotApi(channel_access_token)
     cols = []
