@@ -129,7 +129,7 @@ class TocMachine(GraphMachine):
         uptext=""
         labels=["查詢其他球員"]
         texts = ["查詢其他球員"]
-        send_button_message2(reply_token,title,uptext,labels.texts)
+        send_button_message2(reply_token,title,uptext,labels,texts)
         #self.go_back()
 
     def on_enter_playerinfo_stat(self, event):
