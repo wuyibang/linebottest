@@ -220,12 +220,11 @@ class TocMachine(GraphMachine):
                 break
         print(num)
         img_url = ug_img[num]
-        url = ug_ig[num]
-        title = UG_NAME[num]+" 社群"
+        title = UG_NAME[num]+"IG"
         uptext="IG帳號"
         labels=["查詢"+UG_NAME[num]]
         texts = ["查詢"+UG_NAME[num]]
-        send_button_message2(reply_token,url,uptext,labels,texts)
+        send_button_message2(reply_token,title,uptext,labels,texts)
         #self.go_back()
     # def on_exit_playerinfo_media(self):
     #     print("Leaving media")
