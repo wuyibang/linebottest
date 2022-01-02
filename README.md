@@ -2,7 +2,7 @@
 ## FSM
 ![](https://i.imgur.com/9vey0X2.png)
 
-    FSM(finite state machine)，圈圈代表不同state，箭頭代表state轉換間的條件
+###### FSM(finite state machine)，圈圈代表不同state，箭頭代表state轉換間的條件
     
 ## 功能介紹
 ### 輸入 **"menu"** (不管大小寫)進到menu
