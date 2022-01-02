@@ -81,7 +81,7 @@ def send_button_message2(reply_token, title, uptext, labels, texts):
     replyarr=[]
     replyarr.append(message)
     replyarr.append(TextSendMessage(text=title))
-    line_bot_api.reply_message(reply_token, message)
+    line_bot_api.reply_message(reply_token, replyarr)
     return "OK"
 
 def send_image_carousel(reply_token, imglinks, labels, texts):
