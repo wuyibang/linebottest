@@ -151,8 +151,8 @@ class TocMachine(GraphMachine):
         img_url = Player_pic[num]
         title = STARPLAYER[num]
         uptext = player_data[num]
-        labels = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁"]
-        texts = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁"]
+        labels = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁",STARPLAYER[num]+"應援曲"]
+        texts = [ STARPLAYER[num]+"社群", STARPLAYER[num]+"stat","上一頁",STARPLAYER[num]+"應援曲"]
         send_button_message(reply_token,img_url,title,uptext,labels,texts)
 
     def on_enter_player_song(self, event):
