@@ -48,6 +48,12 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
+            "source": "teaminfo",
+            "dest": "teamlions",
+            "conditions": "is_going_to_teamlions",
+        },
+        {
+            "trigger": "advance",
             "source": "asplayer",
             "dest": "playerinfo",
             "conditions": "is_going_to_playerinfo",

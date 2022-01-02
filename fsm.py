@@ -124,12 +124,13 @@ class TocMachine(GraphMachine):
             if STARPLAYER[i] in name:
                 num = i
                 break
+        img_url = Player_pic[num]
         url = Player_media[num]
         title = name+" 社群"
         uptext=""
         labels=["查詢其他球員"]
         texts = ["查詢其他球員"]
-        send_button_message2(reply_token,title,uptext,labels,texts)
+        send_button_message(reply_token,img_url,url,uptext,labels,texts)
         #self.go_back()
 
     def on_enter_playerinfo_stat(self, event):
@@ -142,6 +143,7 @@ class TocMachine(GraphMachine):
                 num = i
                 break
         now = num
+        img_url = Player_pic[num]
         st = ""
         if now == 0:
             st = "G:114\nAVG:.308 HR:16\nSB:17 OPS+:151.8\n2021 最佳十人外野手\n2021 全壘打王第二名"
@@ -162,7 +164,7 @@ class TocMachine(GraphMachine):
         title=name+"2021數據"
         labels=["查詢其他球員"]
         texts = ["查詢其他球員"]
-        send_button_message2(reply_token,title,st,labels,texts)
+        send_button_message(reply_token,img_url,title,st,labels,texts)
         #self.go_back()
     # def on_exit_playerinfo_media(self):
     #     print("Leaving media")
